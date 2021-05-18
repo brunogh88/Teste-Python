@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  oracle-db:
+    image: oracleinanutshell/oracle-xe-11g:latest
+    container_name: oracle-db
+    restart: always
+    ports:
+        - 1521:1521
+        - 5500:5500
+    environment:
+        ORACLE_SID: "xe"
+        ORACLE_ALLOW_REMOTE: "true"
+    volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/init.sql
